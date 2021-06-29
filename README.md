@@ -47,7 +47,7 @@ This guide aims to build a parallel to the Apple iMac 27-Inch "Core i5" 3.7 (5K,
 
 - FileVault
 - Power Nap
-- Built-in WiFi and Bluetooth. May work with [itlwm](https://openintelwireless.github.io/). If you need stable WiFi+BT, use native apple card
+- distributions May work with [itlwm](https://openintelwireless.github.io/). If you need stable WiFi+BT, use native apple card
 
 ### Hardware
 
@@ -89,8 +89,13 @@ This guide aims to build a parallel to the Apple iMac 27-Inch "Core i5" 3.7 (5K,
 1. Build USB Map 
 2. Build SSDT/DSDT
 3. Gather Files
-4. Configure OpenCore
+4. Configure OpenCore 
 5. Configure BIOS
+6. Create MacOS installer
+   1. Copy EFI/OC files on to USB EFI partition
+7. Boot from Installer USB EFI partition
+8. Install Big Sur 
+9. Copy EFI folder to your Big Sur install drive 
 
 # Preparing your Hackintosh
 
@@ -203,7 +208,7 @@ When creating a new hackintosh or if you're updating OpenCore start with a fresh
 | ------------------------------------------------------------ | ------------ | ------------- | -------- |
 | [OpenCore](https://github.com/acidanthera/OpenCorePkg/releases) | 0.7.0        | /Volumes/EFI/ |          |
 
-Follow the [offical guide](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/opencore-efi.html) for setting up your installer EFI 
+Follow the [official guide](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/opencore-efi.html) for setting up your installer EFI 
 
 - Sample/config.plist(opens new window)
   - See previous section on how to obtain: [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
@@ -276,12 +281,32 @@ keepsyms=1 debug=0x100 alcid=1 agdpmod=pikera -v
 | keepsyms=1     | This is a companion setting to debug=0x100 that tells the OS to also print the symbols on a kernel panic. |      |      |
 | debug=0x100    | This disables macOS's watchdog which helps prevents a reboot on a kernel panic. |      |      |
 | alcid=1        | **Unused for this guide** - Used for setting layout-id for AppleALC |      |      |
-| agdpmod=pikera | Used for disabling board ID checks on Navi GPUs(RX 5000 series), without this you'll get a black screen. **Don't use if you don't have Navi**(ie. Polaris and Vega cards shouldn't use this) |      |      |
+| agdpmod=pikera | Used for disabling board ID checks on Navi GPUs(RX 5000 series), without this you'll get a black screen. **Don't use if you don't have Navi **(ie. Polaris and Vega cards shouldn't use this) |      |      |
 | -v             | This enables verbose mode                                    |      |      |
 
 # MacOS Installer
 
-# Usefull Links
+Here is a quick tutorial on how to get the installer built: 
+
+1. Download MacOS Big Sur 11.4 using - [corpnewt](https://github.com/corpnewt)/**[gibMacOS](https://github.com/corpnewt/gibMacOS)**
+
+   1. You will have to go into the gibMacOS output folder to run the tool to extract the installer into your /Applications/ folder
+
+2. Format installation USB using Disk Utility using the following settings 
+
+   -  <img src="https://i.postimg.cc/C1VLZcjS/image.png" alt="Formatting USB drive" style="zoom:25%;" />
+
+3. Follow the Apple supplied guide for [createinstallmedia](https://support.apple.com/en-us/HT201372)
+
+4. - Adjust the following for target volume name
+
+   - ```
+     sudo /Applications/Install\ macOS\ Big\ Sur.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume
+     ```
+
+5. Once the createinstallmedia tool completes; mount the USB drive's EFI partition using EFI Agent (or another tool) and copy your prepared EFI folder
+
+# Useful Links
 
 # Questions?
 
