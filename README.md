@@ -6,13 +6,7 @@
 
 ------
 
-
-
 <img src="https://i.postimg.cc/bwjmYFfv/image.png" alt="z390m Gaming" style="zoom: 50%;" />
-
-
-
-
 
 
 
@@ -53,7 +47,7 @@ This guide aims to build a parallel to the Apple iMac 27-Inch "Core i5" 3.7 (5K,
 
 - FileVault
 - Power Nap
-- distributions May work with [itlwm](https://openintelwireless.github.io/). If you need stable WiFi+BT, use native apple card
+- Built-in WiFi and Bluetooth. May work with [itlwm](https://openintelwireless.github.io/). If you need stable WiFi+BT, use native apple card
 
 ### Hardware
 
@@ -95,13 +89,8 @@ This guide aims to build a parallel to the Apple iMac 27-Inch "Core i5" 3.7 (5K,
 1. Build USB Map 
 2. Build SSDT/DSDT
 3. Gather Files
-4. Configure OpenCore 
+4. Configure OpenCore
 5. Configure BIOS
-6. Create MacOS installer
-   1. Copy EFI/OC files on to USB EFI partition
-7. Boot from Installer USB EFI partition
-8. Install Big Sur 
-9. Copy EFI folder to your Big Sur install drive 
 
 # Preparing your Hackintosh
 
@@ -121,17 +110,18 @@ This guide aims to build a parallel to the Apple iMac 27-Inch "Core i5" 3.7 (5K,
 
 ### Gathering Files
 
-| Kexts                                                        | Last Version | Use                        | Comments                                                     |
-| ------------------------------------------------------------ | ------------ | -------------------------- | ------------------------------------------------------------ |
-| [Lilu](https://github.com/acidanthera/Lilu/releases)         | 1.5.3        | /Volumes/EFI/EFI/OC/Kexts/ |                                                              |
-| [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases) | 1.2.4        | /Volumes/EFI/EFI/OC/Kexts/ |                                                              |
-| [WhateverGreen](https://github.com/acidanthera/whatevergreen/releases) | 1.5.0        | /Volumes/EFI/EFI/OC/Kexts/ |                                                              |
-| [NVMeFix](https://github.com/acidanthera/NVMeFix/releases)   | 1.0.8        | /Volumes/EFI/EFI/OC/Kexts/ |                                                              |
-| [IntelMausi](https://github.com/acidanthera/IntelMausi/releases) | 1.0.6        | /Volumes/EFI/EFI/OC/Kexts/ |                                                              |
-| [RadeonBoost](https://forums.macrumors.com/threads/tired-of-low-geekbench-scores-use-radeonboost.2231366/) | 1.6          | /Volumes/EFI/EFI/OC/Kexts/ | Not Currently in use (Sunday, June 27, 2021)                 |
-| [AGPMInjector](https://github.com/Pavo-IM/AGPMInjector/releases) | 3.3.4        | /Volumes/EFI/EFI/OC/Kexts/ |                                                              |
-| [USBToolBox kext](https://github.com/USBToolBox/kext)        | 1.1.0        | /Volumes/EFI/EFI/OC/Kexts/ |                                                              |
-| [UTBMap](https://github.com/USBToolBox/tool)*                | 0.0.9        | /Volumes/EFI/EFI/OC/Kexts/ | Generated using the [ToolBox tool](https://github.com/USBToolBox/tool) |
+| Kexts                                                        | Last Version | Use                            | Comments                                                     |
+| ------------------------------------------------------------ | ------------ | ------------------------------ | ------------------------------------------------------------ |
+| [Lilu](https://github.com/acidanthera/Lilu/releases)         | 1.5.5        | /Volumes/EFI/EFI/OC/Kexts/     |                                                              |
+| [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases) | 1.2.6        | /Volumes/EFI/EFI/OC/Kexts/     |                                                              |
+| [WhateverGreen](https://github.com/acidanthera/whatevergreen/releases) | 1.5.2        | /Volumes/EFI/EFI/OC/Kexts/     |                                                              |
+| [NVMeFix](https://github.com/acidanthera/NVMeFix/releases)   | 1.0.9        | /Volumes/EFI/EFI/OC/Kexts/     |                                                              |
+| [IntelMausi](https://github.com/acidanthera/IntelMausi/releases) | 1.0.7        | /Volumes/EFI/EFI/OC/Kexts/     |                                                              |
+| ~~[RadeonBoost](https://forums.macrumors.com/threads/tired-of-low-geekbench-scores-use-radeonboost.2231366/)~~ | ~~1.6~~      | ~~/Volumes/EFI/EFI/OC/Kexts/~~ | Not Currently in use (Sunday, June 27, 2021)                 |
+| [AGPMInjector](https://github.com/Pavo-IM/AGPMInjector/releases) | 3.3.4        | /Volumes/EFI/EFI/OC/Kexts/     |                                                              |
+| [USBToolBox kext](https://github.com/USBToolBox/kext)        | 1.1.0        | /Volumes/EFI/EFI/OC/Kexts/     |                                                              |
+| [UTBMap](https://github.com/USBToolBox/tool)*                | 0.0.9        | /Volumes/EFI/EFI/OC/Kexts/     | Generated using the [ToolBox tool](https://github.com/USBToolBox/tool) |
+| [CPUFriend](https://github.com/acidanthera/CPUFriend/releases) | 1.2.4        | /Volumes/EFI/EFI/OC/Kexts/     |                                                              |
 
 *USB Map must be generated. See USB section below. 
 
@@ -212,9 +202,9 @@ When creating a new hackintosh or if you're updating OpenCore start with a fresh
 
 | Items                                                        | Last Version | Use           | Comments |
 | ------------------------------------------------------------ | ------------ | ------------- | -------- |
-| [OpenCore](https://github.com/acidanthera/OpenCorePkg/releases) | 0.7.0        | /Volumes/EFI/ |          |
+| [OpenCore](https://github.com/acidanthera/OpenCorePkg/releases) | 0.7.2        | /Volumes/EFI/ |          |
 
-Follow the [official guide](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/opencore-efi.html) for setting up your installer EFI 
+Follow the [offical guide](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/opencore-efi.html) for setting up your installer EFI 
 
 - Sample/config.plist(opens new window)
   - See previous section on how to obtain: [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
@@ -246,6 +236,8 @@ This was removed as I am using USB devices for audio
 
 
 #### SMBIOS
+
+**YOU MUST UPDATE SMBIOS INFO for iServices to work**
 
 ![Update SMBIOS](https://i.postimg.cc/bNxmrDfP/image.png)
 
@@ -287,34 +279,43 @@ keepsyms=1 debug=0x100 alcid=1 agdpmod=pikera -v
 | keepsyms=1     | This is a companion setting to debug=0x100 that tells the OS to also print the symbols on a kernel panic. |      |      |
 | debug=0x100    | This disables macOS's watchdog which helps prevents a reboot on a kernel panic. |      |      |
 | alcid=1        | **Unused for this guide** - Used for setting layout-id for AppleALC |      |      |
-| agdpmod=pikera | Used for disabling board ID checks on Navi GPUs(RX 5000 series), without this you'll get a black screen. **Don't use if you don't have Navi **(ie. Polaris and Vega cards shouldn't use this) |      |      |
+| agdpmod=pikera | Used for disabling board ID checks on Navi GPUs(RX 5000 series), without this you'll get a black screen. **Don't use if you don't have Navi**(ie. Polaris and Vega cards shouldn't use this) |      |      |
 | -v             | This enables verbose mode                                    |      |      |
 
 # MacOS Installer
 
-Here is a quick tutorial on how to get the installer built: 
+# Updating your EFI
 
-1. Download MacOS Big Sur 11.4 using - [corpnewt](https://github.com/corpnewt)/**[gibMacOS](https://github.com/corpnewt/gibMacOS)**
+You'll want to regularly update your EFI to keep the process simple. I typically wait for the latest release (11.x.x) of MacOS to mature a few weeks before attempting this procedure as OpenCore and the Kext developers will have time to catch up. 
 
-   1. You will have to go into the gibMacOS output folder to run the tool to extract the installer into your /Applications/ folder
+1. Download the needed files
 
-2. Format installation USB using Disk Utility using the following settings 
+   - See the [gathering files section](#gathering-files).
 
-   -  <img src="https://i.postimg.cc/C1VLZcjS/image.png" alt="Formatting USB drive" style="zoom:25%;" />
+2. Download the latest OpenCore [Releases](https://github.com/acidanthera/OpenCorePkg/releases) - Typically the first Monday of every month
 
-3. Follow the Apple supplied guide for [createinstallmedia](https://support.apple.com/en-us/HT201372)
+3. In the download file you'll find the differences.pdf
 
-4. - Adjust the following for target volume name
+   - /OpenCore-0.*.*-RELEASE/Docs/Differences.pdf
+   - Review the document and see if any of the OC features you depend on have any updates. This is where you will find what is incompatible between versions. 
+     - [ ] Many OC updates and incompatibilities between versions stem from using ALC audio. I forgo the on-board audio and go with an external USB DAC which is fully compatible with MacOS.
 
-   - ```
-     sudo /Applications/Install\ macOS\ Big\ Sur.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume
-     ```
+   
 
-5. Once the createinstallmedia tool completes; mount the USB drive's EFI partition using EFI Agent (or another tool) and copy your prepared EFI folder
+   
+
+## OpenCore EFI Update Log
+
+| Notes                       | Source OC Version | Target OC Version | Date            |
+| --------------------------- | ----------------- | ----------------- | --------------- |
+| Only Files Required updates | 0.7.0             | 0.7.2             | August 28, 2021 |
+|                             |                   |                   |                 |
+|                             |                   |                   |                 |
+
+
 
 # Useful Links
 
 # Questions?
 
 Please post on [/r/Hackintosh](http://hackintosh.reddit.com/) on reddit as they heavily push the vanilla hackintosh method and have been great help in the past
-
