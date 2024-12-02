@@ -1,3 +1,66 @@
+# Hackintosh Gigabyte Z390M GAMING mATX - macOS Sequoia Update
+
+<img src="https://i.postimg.cc/8zgH3gfG/image.png" alt="About This Mac" style="zoom: 67%;" />
+
+
+## Introduction
+
+This guide is an update to the previous Hackintosh guide for the Gigabyte Z390M GAMING mATX motherboard. It now targets macOS Sequoia (15.1.1 as of Dec 2, 2024). The majority of the credit for this update goes to [Gilberto-Mascena's Z390M-GAMING EFI](https://github.com/Gilberto-Mascena/Z390M-GAMING).
+
+Just so you know, if you use the provided EFI folder as is, you must update the SMBIOS serial, SystemUUID, and MLB fields with your own generated values. 
+
+## Quick Overview on How I Upgraded
+
+- Backup EFI: Ensure you have a backup of your current EFI folder.
+  
+- Update OpenCore:
+  - Replace old OpenCore files with the latest release and update `config.plist`.
+
+- Update Kexts and Drivers: Download and replace with the latest versions.
+
+- Boot the current macOS version to validate updated EFI
+
+- Prepare macOS Installer:
+  - Use a tool to download the full macOS installer and create a bootable USB.
+
+- Copy Updated EFI to USB: Mount and copy the updated EFI to the USB's EFI partition.
+
+- Boot into Install Media: Restart and boot from the newly created USB drive.
+
+## Key Differences from Gilberto-Mascena's Guide
+
+- This guide uses an Intel Core i5-9600K CPU, while Gilberto-Mascena uses an i7-9700F
+- The boot argument `agdpmod=pikera` is added to prevent black screen issues with the RX 5700 GPU
+- [USBToolBox](https://github.com/USBToolBox/tool) was used to create a custom USB port map. The resulting `UTBMap.kext` and `USBToolBox.kext` are included in the EFI/OC/Kexts directory.
+- Verbose `-v` boot flag is set for detailed startup messages
+
+
+
+## Installation Process
+
+The general installation process remains the same as the original guide:
+
+1. Build USB Map using USBToolBox
+2. Configure ACPI
+3. Gather required Kexts, Drivers and Tools 
+4. Configure OpenCore config.plist
+5. Update BIOS settings
+6. Install macOS Sequoia
+
+Refer to the original guide for detailed steps on each part of the process. Use the updated kext and driver versions mentioned in this guide.
+
+## Credits
+
+- [Gilberto-Mascena](https://github.com/Gilberto-Mascena) for the Z390M-GAMING EFI update that inspired this guide
+- The hackintosh community on [r/hackintosh](https://www.reddit.com/r/hackintosh/) for their support and troubleshooting help
+
+## Questions or Issues
+
+If you encounter any problems following this guide, please post your questions on the [r/hackintosh subreddit](https://www.reddit.com/r/hackintosh/) where there is a very knowledgeable and helpful hackintosh community.
+
+
+---
+# Detailed Guide
 # Big-Sur-Hackintosh-Gigabyte-Z390M-mATX-GAMING-i5-9600K-PowerColor Radeon-RX-5700
 
 ------
@@ -5,14 +68,6 @@
 ***WORK IN PROGRESS***
 
 ------
-
-<img src="https://i.postimg.cc/bwjmYFfv/image.png" alt="z390m Gaming" style="zoom: 50%;" />
-
-
-
-<img src="https://i.postimg.cc/TY7zp01v/Untitled.png" alt="About This Mac" style="zoom: 67%;" />
-
- 
 
 This guide aims to build a parallel to the Apple iMac 27-Inch "Core i5" 3.7 (5K, 2019). This is a vanilla install guide and I reccomend against using any pre-packaged images or distrobutions. 
 
@@ -301,16 +356,6 @@ You'll want to regularly update your EFI to keep the process simple. I typically
      - [ ] Many OC updates and incompatibilities between versions stem from using ALC audio. I forgo the on-board audio and go with an external USB DAC which is fully compatible with MacOS.
 
    
-
-   
-
-## OpenCore EFI Update Log
-
-| Notes                       | Source OC Version | Target OC Version | Date            |
-| --------------------------- | ----------------- | ----------------- | --------------- |
-| Only Files Required updates | 0.7.0             | 0.7.2             | August 28, 2021 |
-|                             |                   |                   |                 |
-|                             |                   |                   |                 |
 
 
 
