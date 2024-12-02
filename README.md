@@ -1,4 +1,5 @@
-# Hackintosh Gigabyte Z390M GAMING mATX - macOS Sequoia Update
+# Big-Sur-Hackintosh-Gigabyte-Z390M-mATX-GAMING-i5-9600K-PowerColor Radeon-RX-5700
+# macOS Sequoia Update
 
 <img src="https://i.postimg.cc/8zgH3gfG/image.png" alt="About This Mac" style="zoom: 67%;" />
 
@@ -61,11 +62,7 @@ If you encounter any problems following this guide, please post your questions o
 
 ---
 # Detailed Guide
-# Big-Sur-Hackintosh-Gigabyte-Z390M-mATX-GAMING-i5-9600K-PowerColor Radeon-RX-5700
-
-------
-
-***WORK IN PROGRESS***
+---
 
 ------
 
