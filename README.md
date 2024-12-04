@@ -10,6 +10,9 @@ This guide is an update to the previous Hackintosh guide for the Gigabyte Z390M 
 
 Just so you know, if you use the provided EFI folder as is, you must update the SMBIOS serial, SystemUUID, and MLB fields with your own generated values. 
 
+## **Wi-Fi Card BCM943602CDP Doesn't Work**
+The Wi-Fi functionality of the BCM943602CDP card is not supported, though Bluetooth works. For a workaround, refer to [this guide](https://github.com/5T33Z0/OC-Little-Translated/blob/main/14_OCLP_Wintel/Enable_Features/WiFi_Sonoma.md).
+
 ## Quick Overview on How I Upgraded
 
 - Backup EFI: Ensure you have a backup of your current EFI folder.
