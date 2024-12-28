@@ -1,14 +1,50 @@
 # Big-Sur-Hackintosh-Gigabyte-Z390M-mATX-GAMING-i5-9600K-PowerColor Radeon-RX-5700
-# macOS Sequoia Update
 
 <img src="https://i.postimg.cc/8zgH3gfG/image.png" alt="About This Mac" style="zoom: 67%;" />
 
+## Table of Contents
+- [Introduction](#introduction)
+- [Wi-Fi Card BCM943602CDP Doesn't Work](#wi-fi-card-bcm943602cdp-doesnt-work)
+- [Quick Overview on How I Upgraded](#quick-overview-on-how-i-upgraded)
+- [Key Differences from Gilberto-Mascena's Guide](#key-differences-from-gilberto-mascenas-guide)
+- [Installation Process](#installation-process)
+- [Credits](#credits)
+- [Questions or Issues](#questions-or-issues)
+- [Detailed Guide](#detailed-guide)
+  - [What's Working/What's Not](#whats-workingwhats-not)
+  - [Hardware](#hardware)
+  - [Process](#process)
+  - [Preparing your Hackintosh](#preparing-your-hackintosh)
+    - [BIOS Configuration](#bios-configuration)
+    - [Gathering Files](#gathering-files)
+    - [USB Mapping Recognized](#usb-mapping-recognized)
+    - [Creating your SSDT/DSDT](#creating-your-ssdt-dsdt)
+  - [Navigating your OpenCore config.plist](#navigating-your-opencore-configplist)
+    - [Good Practices / plist Workflow](#good-practices--plist-workflow)
+    - [Starting Clean](#starting-clean)
+    - [config.plist contents](#configplist-contents)
+      - [Booter](#booter)
+      - [DeviceProperties](#deviceproperties)
+      - [SMBIOS](#smbios)
+      - [Kernel](#kernel)
+      - [Misc](#misc)
+      - [NVRAM](#nvram)
+  - [MacOS Installer](#macos-installer)
+  - [Updating your EFI](#updating-your-efi)
+
+---
 
 ## Introduction
+This guide is an update to the previous Hackintosh guide for the Gigabyte Z390M GAMING mATX motherboard. It now targets macOS Sequoia (15.1.1 as of Dec 2, 2024). The majority of the credit for this update goes to [Gilberto-Mascena's Z390M-GAMING EFI].
 
-This guide is an update to the previous Hackintosh guide for the Gigabyte Z390M GAMING mATX motherboard. It now targets macOS Sequoia (15.1.1 as of Dec 2, 2024). The majority of the credit for this update goes to [Gilberto-Mascena's Z390M-GAMING EFI](https://github.com/Gilberto-Mascena/Z390M-GAMING).
+[Continue with the rest of your content as it is...]
 
-Just so you know, if you use the provided EFI folder as is, you must update the SMBIOS serial, SystemUUID, and MLB fields with your own generated values. 
+---
+
+The Table of Contents links directly to each section, making it easier for readers to navigate through your guide.
+
+Citations:
+[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/14887947/5234e787-ce83-4c4f-b9ac-4a56cfbdfca6/paste.txt
 
 ## **Wi-Fi Card BCM943602CDP Doesn't Work**
 The Wi-Fi functionality of the BCM943602CDP card is not supported, though Bluetooth works. For a workaround, refer to [this guide](https://github.com/5T33Z0/OC-Little-Translated/blob/main/14_OCLP_Wintel/Enable_Features/WiFi_Sonoma.md).
