@@ -1,5 +1,9 @@
 # Big-Sur-Hackintosh-Gigabyte-Z390M-mATX-GAMING-i5-9600K-PowerColor Radeon-RX-5700
 
+## Introduction
+This guide is an update to the previous Hackintosh guide for the Gigabyte Z390M GAMING mATX motherboard. It now targets macOS Sequoia (15.1.1 as of Dec 2, 2024). The majority of the credit for this update goes to [Gilberto-Mascena's Z390M-GAMING EFI].
+
+
 <img src="https://i.postimg.cc/8zgH3gfG/image.png" alt="About This Mac" style="zoom: 67%;" />
 
 ## Table of Contents
@@ -34,10 +38,8 @@
 
 ---
 
-## Introduction
-This guide is an update to the previous Hackintosh guide for the Gigabyte Z390M GAMING mATX motherboard. It now targets macOS Sequoia (15.1.1 as of Dec 2, 2024). The majority of the credit for this update goes to [Gilberto-Mascena's Z390M-GAMING EFI].
 
-[Continue with the rest of your content as it is...]
+
 
 ---
 
