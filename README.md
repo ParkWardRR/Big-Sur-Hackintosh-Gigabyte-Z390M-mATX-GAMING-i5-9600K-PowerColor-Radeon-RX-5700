@@ -38,16 +38,6 @@ This guide is an update to the previous Hackintosh guide for the Gigabyte Z390M 
 
 ---
 
-
-
-
----
-
-The Table of Contents links directly to each section, making it easier for readers to navigate through your guide.
-
-Citations:
-[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/14887947/5234e787-ce83-4c4f-b9ac-4a56cfbdfca6/paste.txt
-
 ## **Wi-Fi Card BCM943602CDP Doesn't Work**
 The Wi-Fi functionality of the BCM943602CDP card is not supported, though Bluetooth works. For a workaround, refer to [this guide](https://github.com/5T33Z0/OC-Little-Translated/blob/main/14_OCLP_Wintel/Enable_Features/WiFi_Sonoma.md).
 
